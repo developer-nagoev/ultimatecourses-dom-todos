@@ -1,0 +1,277 @@
+/* ==============================
+👉 Font-family
+================================ */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+
+/* ==============================
+👉 Variables
+ ================================ */
+:root {
+  --body-color: rgb(241, 240, 234);
+  --todo-shadow: rgb(220, 220, 220);
+  --font-family: "Rubik", sans-serif;
+  --white: rgb(255, 255, 255);
+  --black: rgb(51, 51, 51);
+  --green: rgb(157, 211, 168);
+  --orange: rgb(254, 218, 119);
+  --red: rgb(254, 95, 85);
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+/* ==============================
+👉 Base
+ ================================ */
+body {
+  background-color: var(--body-color);
+  font-family: var(--font-family);
+  color: var(--black);
+  font-weight: 300;
+}
+
+#app {
+  width: 95%;
+  margin: auto;
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.todos {
+  max-width: 600px;
+  width: 100%;
+  background-color: var(--white);
+  box-shadow: 0 5px 4px 0px #dcdcdc;
+  padding: 30px;
+}
+
+@media (min-width: 768px) {
+  .todos {
+    padding: 40px;
+  }
+}
+
+/* HEADER */
+
+.todos__header {
+  margin-bottom: 20px;
+}
+
+.todos__title {
+  font-size: 25px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* STATS */
+
+.todos-stats {
+  position: relative;
+  padding-right: 100px;
+}
+
+.todos-stats__count {
+  font-weight: 400;
+}
+
+.todos-stats__clear {
+  font-family: var(--font-family);
+  border: none;
+  border: 0;
+  border-radius: 1px;
+  padding: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  color: rgba(51, 51, 51, 0.5);
+  background-color: var(--green);
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.2s ease;
+}
+
+.todos-stats__clear:hover,
+.todos-stats__clear:focus {
+  outline-color: var(--orange);
+  color: var(--black);
+}
+
+/* FORM */
+.todos-form {
+  margin-bottom: 20px;
+}
+
+.todos-form__control {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  font-family: inherit;
+  border: 2px solid var(--black);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.todos-form__control:hover {
+  border-color: var(--green);
+}
+
+.todos-form__control:focus {
+  border-color: var(--orange);
+}
+
+/* TODO-LIST */
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.todo-item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.todo-item__name,
+.todo-item__control {
+  flex: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+  word-break: break-all;
+}
+
+.todo-item__control {
+  outline: none;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.todo-item__checkbox:checked ~ .todo-item__name {
+  text-decoration: line-through;
+  color: rgba(51, 51, 51, 0.5);
+}
+
+.todo-item__delete {
+  display: block;
+  border: 0;
+  border: none;
+  outline: none;
+  color: var(--red);
+  background: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.todo-item__delete > * {
+  pointer-events: none;
+}
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type="checkbox"] {
+    --active: rgb(157, 211, 168);
+    --active-inner: #fff;
+    --focus: 2px rgba(254, 218, 119, 0.3);
+    --border: #bbc1e1;
+    --border-hover: rgb(157, 211, 168);
+    --background: #fff;
+    --disabled: #f6f8ff;
+    --disabled-inner: #e1e6f9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 21px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid var(--bc, var(--border));
+    background: var(--b, var(--background));
+    -webkit-transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+  }
+  input[type="checkbox"]:after {
+    content: "";
+    display: block;
+    left: 0;
+    top: 0;
+    position: absolute;
+    -webkit-transition: opacity var(--d-o, 0.2s),
+      -webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
+    transition: opacity var(--d-o, 0.2s),
+      -webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
+    transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
+      opacity var(--d-o, 0.2s);
+    transition: transform var(--d-t, 0.3s) var(--d-t-e, ease),
+      opacity var(--d-o, 0.2s),
+      -webkit-transform var(--d-t, 0.3s) var(--d-t-e, ease);
+  }
+  input[type="checkbox"]:checked {
+    --b: var(--active);
+    --bc: var(--active);
+    --d-o: 0.3s;
+    --d-t: 0.6s;
+    --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
+  }
+  input[type="checkbox"]:disabled {
+    --b: var(--disabled);
+    cursor: not-allowed;
+    opacity: 0.9;
+  }
+  input[type="checkbox"]:disabled:checked {
+    --b: var(--disabled-inner);
+    --bc: var(--border);
+  }
+  input[type="checkbox"]:disabled + label {
+    cursor: not-allowed;
+  }
+  input[type="checkbox"]:hover:not(:checked):not(:disabled) {
+    --bc: var(--border-hover);
+  }
+  input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 var(--focus);
+  }
+  input[type="checkbox"]:not(.switch) {
+    width: 21px;
+  }
+  input[type="checkbox"]:not(.switch):after {
+    opacity: var(--o, 0);
+  }
+  input[type="checkbox"]:not(.switch):checked {
+    --o: 1;
+  }
+  input[type="checkbox"] + label {
+    font-size: 14px;
+    line-height: 21px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin-left: 4px;
+  }
+
+  input[type="checkbox"]:not(.switch):after {
+    width: 5px;
+    height: 9px;
+    border: 2px solid var(--active-inner);
+    border-top: 0;
+    border-left: 0;
+    left: 7px;
+    top: 4px;
+    -webkit-transform: rotate(var(--r, 20deg));
+    transform: rotate(var(--r, 20deg));
+  }
+  input[type="checkbox"]:not(.switch):checked {
+    --r: 43deg;
+  }
+}
